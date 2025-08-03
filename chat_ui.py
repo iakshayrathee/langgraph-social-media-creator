@@ -526,20 +526,25 @@ def create_simple_gradio_interface():
 
 def main():
     """Launch the simple Gradio chat interface."""
-    print("🚀 Starting Social Media Content Creator Chat UI...")
+    import os
+    
+    # Get port from environment variable or use default
+    port = int(os.environ.get('PORT', 7860))
+    
+    print(f"🚀 Starting Social Media Content Creator Chat UI...")
     print("📝 Using rule-based generation with LangGraph workflow")
-    print("📱 This will open in your default web browser")
-    print("🌐 Local access: http://localhost:7860")
+    print(f"🌐 Server will be available at: http://0.0.0.0:{port}")
     
     interface = create_simple_gradio_interface()
     
+    # Launch the app with Render-compatible settings
     interface.launch(
-        server_name="127.0.0.1",  # Use localhost for proper URL display
-        server_port=7860,         # Standard Gradio port
-        share=True,               # Create public link for sharing
-        show_error=True,          # Show detailed errors
-        quiet=False,              # Show startup logs
-        inbrowser=True            # Auto-open in browser
+        server_name="0.0.0.0",  # Required for Render to bind to all network interfaces
+        server_port=port,       # Use the port from environment variable
+        show_error=True,        # Show detailed errors
+        quiet=False,            # Show startup logs
+        inbrowser=False,         # Don't try to open browser in production
+        share=True               # Create public link for sharing
     )
 
 if __name__ == "__main__":
