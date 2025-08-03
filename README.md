@@ -21,8 +21,6 @@ A LangGraph-based application for generating comprehensive social media content 
 │   └── workflow.py           # Main workflow implementation
 ├── chat_ui.py               # Gradio web interface
 ├── cli.py                   # Command-line interface
-├── enhanced_workflow.py     # Extended workflow implementation
-├── llm_integration.py       # LLM model handling
 ├── requirements.txt         # Project dependencies
 └── test_all_features.py     # Test cases
 ```
